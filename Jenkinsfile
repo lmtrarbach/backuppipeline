@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'jenkinsci/slave'
+    }
+    
+  }
   stages {
     stage('Rocket') {
       steps {
@@ -11,7 +16,7 @@ pipeline {
         waitUntil() {
           catchError()
         }
-
+        
       }
     }
   }
